@@ -216,7 +216,7 @@ class Bayes:
         return pair
 
 
-tick = time.clock()
+tick = time.perf_counter()
 setup_without_user_input()
 test_speed()
 num_attempts = math.floor(Bayes.training_time / Model.evolution_time)
@@ -224,4 +224,4 @@ param_bounds = np.array([[1, 200], [1, 50], [0, 0.2], [-0.05, 0.05]])
 training_result = Bayes.bayesian_optimisation(num_attempts, Bayes.run_parameter_set, param_bounds)
 Writer.save_pickled_object(training_result, "train.txt")
 print("EXPECTED TIME:", Bayes.training_time)
-print("ACTUAL TIME:", time.clock() - tick)
+print("ACTUAL TIME:", time.perf_counter() - tick)
